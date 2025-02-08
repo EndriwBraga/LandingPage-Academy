@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,22 +7,25 @@
       href="https://cdn.jsdelivr.net/npm/remixicon@3.4.0/fonts/remixicon.css"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="./css/styles.css" />
     <title>Personal_Jeimerson</title>
   </head>
   <body>
-    <nav>
+    <nav class="nav__suprime">
       <div class="nav__logo">
         <a href="#"><img src="assets/logo.png" alt="logo" /></a>
+        
       </div>
       <ul class="nav__links">
         <li class="link"><a href="#">Inicio</a></li>
         <li class="link"><a href="#program">Programa</a></li>
         <li class="link"><a href="#service">Serviço</a></li>
         <li class="link"><a href="#about">Sobre</a></li>
-        <li class="link"><a href="#community">Comunidade</a></li>
+        <li class="link"><a href="#review">Depoimentos</a></li>
+        <button class="btn">Junte-se</button>
       </ul>
-      <button class="btn">Junte-se</button>
+      
+      <button class="hamburger"></button>
     </nav>
 
     <header class="section__container header__container">
@@ -224,7 +227,7 @@
       </div>
     </section>
 
-    <section class="review">
+    <section id="review" class="review">
       <div class="section__container review__container">
         <span><i class="ri-double-quotes-r"></i></span>
         <div class="review__content">
@@ -310,5 +313,8 @@
     <div class="footer__bar">
       Copyright © 2024. All rights reserved.
     </div>
+
+    <script src="js/script.js"></script>
+
   </body>
 </html>

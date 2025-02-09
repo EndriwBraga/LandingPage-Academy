@@ -28,7 +28,7 @@
   padding: 5rem 1rem;
 }
 
-.section__header {
+.section__header  {
   margin-bottom: 1rem;
   font-size: 2.25rem;
   font-weight: 600;
@@ -332,6 +332,7 @@ nav {
 .class__content p {
   margin-bottom: 4rem;
   color: var(--text-light);
+  text-align: justify;
 }
 
 .join__image {
@@ -477,6 +478,7 @@ nav {
   max-width: 800px;
   margin-bottom: 2rem;
   color: var(--text-light);
+  text-align: justify;
 }
 
 .review__rating span {
@@ -520,9 +522,15 @@ nav {
 }
 
 .footer__container {
-  position: relative;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  display: flex;
+  flex-direction: column;
+}
+
+.footer__col__tittle {
+  margin-bottom: 2rem;
+  font-size: 2.25rem;
+  color: var(--white);
+  text-align: center;
 }
 
 .footer__blur {
@@ -537,18 +545,35 @@ nav {
 
 .footer__col {
   margin-left: 130px;
+  display: flex;
 }
 
 .footer__col p {
-  margin-bottom: 2rem;
   color: var(--text-light);
+  max-width: 500px;
+  margin-right: 40px;
+  text-align: justify;
+
+  padding: 2rem 1rem;
+  background-color: var(--primary-color-light);
+  border-radius: 10px;
+}
+
+.footer__col_a {
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+  padding: 2rem 1rem;
+  background-color: var(--primary-color-light);
+  border-radius: 10px;
 }
 
 .footer__socials {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 1rem;
-  margin-left: 130px;
+  margin-top: 50px;
 }
 
 .footer__socials a {
@@ -572,14 +597,14 @@ nav {
   color: var(--white);
 }
 
-.footer__col > a {
-  display: block;
-  margin-bottom: 1rem;
+
+
+.footer__col_a > a {
+  display: flex;
   color: var(--text-light);
-  transition: 0.3s;
 }
 
-.footer__col > a:hover {
+.footer__col_a > a:hover {
   color: var(--secondary-color);
 }
 
@@ -633,10 +658,6 @@ nav {
 
   .nav__links li:nth-child(4) a {
     transition: 0.5s 0.8s;
-  }
-
-  .nav__links li:nth-child(5) a {
-    transition: 0.5s 1s;
   }
 
   .nav__suprime.active .nav__links a {
@@ -706,6 +727,13 @@ nav {
     display: flex;
     flex-direction: column;
   }
+
+  .footer__col {
+    flex-direction: column;
+  }
+
+  .footer__col p{
+    margin-bottom: 20px;
+  }
+
 }
-
-

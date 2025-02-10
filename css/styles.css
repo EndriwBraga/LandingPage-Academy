@@ -705,11 +705,6 @@ nav {
     grid-area: 1/1/2/2;
   }
 
-  .explore__grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
-  }
-
   .class__container {
     grid-template-columns: repeat(1, 1fr);
   }
@@ -717,6 +712,12 @@ nav {
   .class__image {
     min-height: 500px;
   }
+
+  .explore__container {
+    width: 600px; 
+    overflow: hidden;
+    position: relative;
+  } 
 
   .price__grid {
     grid-template-columns: repeat(2, 1fr);

@@ -244,7 +244,7 @@ nav {
 }
 
 .explore__container {
-  width: 900px; /* Garante que apenas 4 cards fiquem visíveis por vez */
+  width: 900px; 
   overflow: hidden;
   position: relative;
 }
@@ -253,6 +253,7 @@ nav {
   margin-top: 4rem;
   display: flex;
   gap: 2rem;
+  transition: transform 0.5s ease-in-out;
 }
 
 .explore__card {
@@ -261,7 +262,7 @@ nav {
   border: 2px solid transparent;
   border-radius: 10px;
   transition: 0.3s;
-  flex: 0 0 268px; /* Cada card tem 268px de largura fixa */
+  flex: 0 0 268px; 
 }
 
 .explore__card:hover {

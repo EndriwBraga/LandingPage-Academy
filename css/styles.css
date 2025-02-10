@@ -22,7 +22,7 @@
   z-index: 10;
 }
 
-.section__container {
+.section__container { 
   max-width: var(--max-width);
   margin: auto;
   padding: 5rem 1rem;
@@ -243,10 +243,15 @@ nav {
   border-color: var(--secondary-color);
 }
 
+.explore__container {
+  width: 900px; /* Garante que apenas 4 cards fiquem visíveis por vez */
+  overflow: hidden;
+  position: relative;
+}
+
 .explore__grid {
   margin-top: 4rem;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  display: flex;
   gap: 2rem;
 }
 
@@ -256,6 +261,7 @@ nav {
   border: 2px solid transparent;
   border-radius: 10px;
   transition: 0.3s;
+  flex: 0 0 268px; /* Cada card tem 268px de largura fixa */
 }
 
 .explore__card:hover {

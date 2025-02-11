@@ -7,6 +7,7 @@ const nextCard = document.querySelector(".next");
 const prevCard = document.querySelector(".prev");
 
 const totalCards = document.querySelectorAll(".explore__card").length;
+const cardWidth = 268 + 32; // Possivel melhoria, descobrir como fazer para pegar automaticamento o tamanho do card + o tamanho do gap em vez de eu proporcionar as larguras.
 
 if (hamburger && nav) {
   hamburger.addEventListener("click", () => nav.classList.toggle("active"));
@@ -16,29 +17,47 @@ if (hamburger && nav) {
   });
 }
 
-let currentIndex = 0;
-const cardWidth = 268 + 32; // 268px de largura + 2rem (32px) de gap convertido para pixels
-
-
 function updateCarousel() {
   track.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
 }
 
+
 nextCard.addEventListener("click", () => {
-  if(currentIndex < totalCards -3){
-    currentIndex++;
-    updateCarousel();
-  }
+  currentIndex = (currentIndex + 1) % totalCards; 
+  updateCarousel();
 });
 
 prevCard.addEventListener("click", () => {
-  if (currentIndex > 0) {
-    currentIndex--;
-    updateCarousel();
-  }
+  currentIndex = (currentIndex - 1 + totalCards) % totalCards; 
+  updateCarousel();
 });
 
-console.log(nextCard);
-console.log(prevCard);
-console.log(totalCards);
-console.log(cardWidth);
+let currentIndex = 0;
+let startX = 0;
+
+track.addEventListener("touchstart", (e) => {
+  startX = e.touches[0].clientX;
+});
+
+track.addEventListener("touchmove", (e) => {
+  endX = e.touches[0].clientX;
+});
+
+track.addEventListener("touchend", () => {
+  let deltaX = startX - endX;
+
+  if (deltaX > 50 && currentIndex < totalCards - 3) {
+    currentIndex++;
+  } else if (deltaX < -50 && currentIndex > 0) {
+    currentIndex--;
+  }
+
+  updateCarousel();
+}); 
+
+// DIV de depoimentos // Possivel carrocel, só não sei precisa.
+const reviewContainer = document.querySelector(".review__container");
+const review__content = document.querySelector(".review__content");
+
+console.log(reviewContainer);
+console.log(review__content);

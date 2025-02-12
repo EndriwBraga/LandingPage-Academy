@@ -12,10 +12,6 @@ Corrigi um bug que ocorria no carrossel "Explore o Programa" da página. Na lóg
 Na versão mobile não aparece o ultimo slide antes de resetar, irei ter que mudar a lógica da função update carrosel, por que quando eu pego 900 px de width na pagina, eu mudo no CSS
 para 2 slides, e isso está impactando na função.
 
+Também não estava rolando para esquerda, tive que mudar a função do touchend, problema resolvido.
 
-```javascript
-function getMaxIndex() {
-  return window.innerWidth <= 900 ? totalCards - 2 : totalCards - 3;
-}
-
-Tive que implementar essa parte no código para pegar a largura da tela com window.innerWidth, ela em si esta retornando se a tela tem menos que 900 pixel, tem 2 card no carrosel, se tem mais que isso tem 3. Isso foi definido no CSS. Total cards é 9, então no console.log ele imprimi 6 ou 7.
+**Primeiro Carrosel Finalizado. 12/02/2025 13:01** 

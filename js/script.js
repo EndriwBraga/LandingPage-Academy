@@ -7,7 +7,7 @@ const nextCard = document.querySelector(".next");
 const prevCard = document.querySelector(".prev");
 
 const totalCards = document.querySelectorAll(".explore__card").length;
-const cardWidth = 268 + 32; // Possivel melhoria, descobrir como fazer para pegar automaticamento o tamanho do card + o tamanho do gap em vez de eu proporcionar as larguras.
+const cardWidth = 268 + 32;
 
 if (hamburger && nav) {
   hamburger.addEventListener("click", () => nav.classList.toggle("active"));
@@ -17,33 +17,54 @@ if (hamburger && nav) {
   });
 }
 
-let currentIndex = 0;
-nextCard.addEventListener("click", () => {
-  if (currentIndex < totalCards - 1) {
-    currentIndex++;  
-  } else {
-    currentIndex = 0;  
-  }
-  updateCarousel();
-});
+function getMaxIndex() {
+  return window.innerWidth <= 900 ? totalCards - 2 : totalCards - 3;
+}
 
-prevCard.addEventListener("click", () => {
-  currentIndex = (currentIndex - 1 + totalCards) % totalCards; 
-  updateCarousel();
-});
+let currentIndex = 0;
 
 function updateCarousel() {
-  // Obs p mim do futuro: Aqui fica -2 por que se eu deixar -1, vai aparecer um slide fantasma
-  // e não buga por causa da nextCard.
-  if (currentIndex >= totalCards - 2) {  
+
+  let maxIndex = getMaxIndex();
+
+  if (currentIndex > maxIndex) {
+ 
     currentIndex = 0; 
   } else if (currentIndex < 0) {
-    currentIndex = totalCards - 3; 
+    currentIndex = maxIndex;  
   }
 
   track.style.transition = "transform 0.5s ease-in-out";
   track.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
 }
+
+nextCard.addEventListener("click", () => {
+  let maxIndex = getMaxIndex();
+  if (currentIndex < maxIndex) {
+    currentIndex++;  
+  } else {
+    currentIndex = 0; 
+  }
+  updateCarousel();
+});
+
+prevCard.addEventListener("click", () => {
+  let maxIndex = getMaxIndex();
+  if (currentIndex > 0) {
+    currentIndex--;  
+  } else {
+    currentIndex = maxIndex;
+  }
+  updateCarousel();
+});
+
+let resizeTimeout;
+window.addEventListener("resize", () => {
+  clearTimeout(resizeTimeout); 
+  resizeTimeout = setTimeout(() => {
+    updateCarousel(); 
+  }, 200); 
+});
 
 let startX = 0;
 track.addEventListener("touchstart", (e) => {

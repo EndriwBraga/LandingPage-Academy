@@ -17,13 +17,13 @@ if (hamburger && nav) {
   });
 }
 
-function updateCarousel() {
-  track.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
-}
-
-
+let currentIndex = 0;
 nextCard.addEventListener("click", () => {
-  currentIndex = (currentIndex + 1) % totalCards; 
+  if (currentIndex < totalCards - 1) {
+    currentIndex++;  
+  } else {
+    currentIndex = 0;  
+  }
   updateCarousel();
 });
 
@@ -32,13 +32,25 @@ prevCard.addEventListener("click", () => {
   updateCarousel();
 });
 
-let currentIndex = 0;
-let startX = 0;
+function updateCarousel() {
+  // Obs p mim do futuro: Aqui fica -2 por que se eu deixar -1, vai aparecer um slide fantasma
+  // e não buga por causa da nextCard.
+  if (currentIndex >= totalCards - 2) {  
+    currentIndex = 0; 
+  } else if (currentIndex < 0) {
+    currentIndex = totalCards - 3; 
+  }
 
+  track.style.transition = "transform 0.5s ease-in-out";
+  track.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+}
+
+let startX = 0;
 track.addEventListener("touchstart", (e) => {
   startX = e.touches[0].clientX;
 });
 
+let endX = 0;
 track.addEventListener("touchmove", (e) => {
   endX = e.touches[0].clientX;
 });
@@ -51,7 +63,6 @@ track.addEventListener("touchend", () => {
   } else if (deltaX < -50 && currentIndex > 0) {
     currentIndex--;
   }
-
   updateCarousel();
 }); 
 

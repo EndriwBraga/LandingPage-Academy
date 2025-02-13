@@ -15,3 +15,4 @@ para 2 slides, e isso está impactando na função.
 Também não estava rolando para esquerda, tive que mudar a função do touchend, problema resolvido.
 
 **Primeiro Carrosel Finalizado. 12/02/2025 13:01** 
+

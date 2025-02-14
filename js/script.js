@@ -6,8 +6,12 @@ const track = document.querySelector(".explore__grid");
 const nextCard = document.querySelector(".next");
 const prevCard = document.querySelector(".prev");
 
+const nextCardReview = document.querySelector(".nextReview");
+const prevCardReview = document.querySelector(".prevReview");
+
 const totalCards = document.querySelectorAll(".explore__card").length;
 const cardWidth = 268 + 32;
+
 
 if (hamburger && nav) {
   hamburger.addEventListener("click", () => nav.classList.toggle("active"));
@@ -32,7 +36,7 @@ function updateCarousel() {
   }
 
   track.style.transition = "transform 0.5s ease-in-out";
-  track.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+  track.style.transform = `translateX(-${currentIndex * cardWidth}px)`;  
 }
 
 if (nextCard && prevCard) {
@@ -82,9 +86,55 @@ if (track) {
   });
 }
 
-// DIV de depoimentos // Possivel carrocel, só não sei precisa.
-const reviewContainer = document.querySelector(".review__container");
-const review__content = document.querySelector(".review__content");
 
-console.log(reviewContainer);
-console.log(review__content);
+
+
+
+
+
+
+
+
+
+
+
+// DIV de depoimentos // Possivel carrocel, só não sei precisa.
+const cardMasterReview = document.querySelector(".review__container__master");
+// div do CARD
+const totalCardsReview = document.querySelectorAll(".review__content").length;
+
+let currentIndexReview = 0;
+const cardWidthReview = 790;
+
+if (nextCardReview && prevCardReview) {
+  nextCardReview.addEventListener("click", () => {
+    currentIndexReview = currentIndexReview < 2 ? currentIndexReview + 1 : 0;
+    updateCarouselReview();
+  });
+
+  prevCardReview.addEventListener("click", () => {
+    currentIndexReview = currentIndexReview > 0 ? currentIndexReview - 1 : 2;
+    updateCarouselReview();
+  });
+}
+
+function updateCarouselReview() {
+  if (currentIndexReview > 2) {
+    currentIndexReview = 0;
+  } else if (currentIndexReview < 0) {
+    currentIndexReview = 2;
+  }
+
+  cardMasterReview.style.transition = "transform 0.5s ease-in-out";
+  cardMasterReview.style.transform = `translateX(-${currentIndexReview * cardWidthReview}px)`;  
+}
+
+console.log(cardMasterReview);
+
+
+
+
+
+
+
+

@@ -472,12 +472,6 @@ nav {
   width: 900px;
 }
 
-.review__container__span {
-  font-size: 6rem;
-  color: var(--secondary-color);
-  opacity: 0.5;
-}
-
 .review__member__details h4 {
   font-size: 1.3rem;
   font-weight: 600;
@@ -488,6 +482,12 @@ nav {
   display: flex;
   flex-direction: row;
   gap: 5rem;
+}
+
+.review__container__span {
+  font-size: 6rem;
+  color: var(--secondary-color);
+  opacity: 0.5;
 }
 
 .review__content__H4 {
